@@ -1,0 +1,57 @@
+/* Event Planner Costom Table CSS */
+
+.main-fieldset{
+    width: 100% !important;
+}
+
+fieldset.main-fieldset > form > div > .ant-form-item:nth-child(1) {
+    width: 25% !important;
+}
+
+fieldset.main-fieldset > form > div > .ant-form-item {
+    /* background-color: antiquewhite; */
+    width: 15% !important;
+}
+
+
+.input-labels{
+    font-size: 10px !important;
+    /* background-color: blue; */
+}
+
+.headings{
+    font-size: 18px !important;
+}
+
+
+.ant-form-item{
+    width: 15% !important;
+}
+
+.ant-form-item:nth-child(1){
+    width: 25% !important;
+}
+
+.ant-form-item:nth-child(3){
+    width: 25% !important;
+}
+
+.ant-form-item:last-child {
+    width: 15% !important;
+}
+
+.ant-form-item .ant-form-item-label >label{
+    font-size: 10px !important;
+}
+
+.order-status-text{
+    /* display: none; */
+    font-size: 10px !important;
+}
+
+
+@media only screen and (min-width: 1250){
+    .headings{
+        font-size: 22px !important;
+    }
+}

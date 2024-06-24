@@ -1,0 +1,75 @@
+.Sidebar {
+    color: #fff;
+    position: fixed;
+    height: 100vh;
+    /* width: 200px !important; */
+}
+
+/* .ant-layout .ant-layout-sider-light{
+    width: 170px !important;
+}
+
+
+@media only screen and (min-width: 1200px){
+    .ant-layout .ant-layout-sider-light{
+        width: 230px !important;
+    }
+} */
+
+/* aside.ant-layout-sider.ant-layout-sider-light.Sidebar{
+    width: 170px !important;
+    background-color: blue;
+}  */
+
+/* @media only screen and (min-width: 1200px){
+    aside.ant-layout-sider.ant-layout-sider-light.Sidebar{
+        width: 230px !important;
+    }
+} */
+
+/* :where(.css-dev-only-do-not-override-dkbvqv).ant-layout .ant-layout-sider {
+    position: fixed;
+} */
+
+.logo-image {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.logo-image img {
+    /* border-radius: 50%; */
+    width: 80%;
+    /* height: 100px; */
+}
+
+.logo-image p {
+    font-size: large;
+    font-family: 'poppins';
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #009ae2;
+    line-height: 20px;
+}
+
+.logo-image p .underlined {
+    position: relative;
+}
+
+.logo-image p .underline-mask:after {
+    content: '';
+    position: absolute;
+    top: 95%;
+    width: 150%;
+    aspect-ratio: 3 / 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+    border: 6px solid hsl(280 80% 50%);
+    /* Use a conic gradient mask to hide and show the bits you want */
+    --spread: 140deg;
+    --start: 290deg;
+    mask: conic-gradient(from var(--start), white 0 var(--spread), transparent var(--spread));
+}

@@ -1,0 +1,12 @@
+.ant-form-item{
+    width: 21% !important;
+    /* gap: 15px; */
+}
+
+.ant-form-item:last-child{
+    width: 6% !important;
+}
+
+.ant-form-item:nth-child(3){
+    width: 10% !important;
+}

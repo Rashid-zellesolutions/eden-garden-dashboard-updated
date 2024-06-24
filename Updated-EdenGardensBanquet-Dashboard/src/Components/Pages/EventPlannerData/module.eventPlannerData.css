@@ -1,0 +1,23 @@
+/* Event Planner Data CSS */
+
+.input-labels{
+    font-size: 10px !important;
+}
+
+.headings{
+    font-size: 18px !important;
+}
+
+
+
+@media only screen and (min-width: 1250px){
+    .input-labels{
+        font-size: 14px !important;
+    }
+    .headings{
+        font-size: 22px !important;
+    }
+    .order-input{
+        margin-top: 4px !important;
+    }
+}

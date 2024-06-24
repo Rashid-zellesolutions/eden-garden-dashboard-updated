@@ -1,0 +1,32 @@
+/* .containerTab{
+    max-height: 200px;
+
+} */
+
+.containerTab h2{
+    font-family: 'Poppins';
+    font-size: 16px;
+    color: #B78953;
+    margin: 10px 0 5px 0;
+}
+
+.checkbox-group {
+    display: flex;
+
+    flex-wrap: wrap;
+    align-items: center; /* Center all children horizontally */
+    gap: 10px;
+  }
+
+
+  .checkbox-group > label {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: flex-start; /* Center horizontally */
+    width: 100%; /* Ensure labels take full width for consistent centering */
+  }
+  
+  .checkbox-group > label > input[type="checkbox"], .checkbox-group > label > input[type="radio"] {
+    margin-right: 20px;
+  }
+  

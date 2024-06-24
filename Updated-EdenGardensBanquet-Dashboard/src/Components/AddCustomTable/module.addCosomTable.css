@@ -1,0 +1,18 @@
+.ant-form-item{
+    width: 20% !important;
+}
+
+.costom-fieldsat > form > div > .ant-form-item{
+    /* background-color: brown !important; */
+    width: 22.5% !important;
+}
+
+.costom-fieldsat > form > div > .ant-form-item:nth-child(5){
+    /* background-color: brown !important; */
+    width: 5% !important;
+}
+
+.costom-fieldsat > form > div > .ant-form-item:nth-child(6){
+    /* background-color: brown !important; */
+    width: 5% !important;
+}

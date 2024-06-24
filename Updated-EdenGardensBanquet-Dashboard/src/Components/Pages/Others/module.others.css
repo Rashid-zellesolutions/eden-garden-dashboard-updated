@@ -1,0 +1,13 @@
+/* Others PAge CSS */
+
+.btn-text{
+    font-size: 14px !important;
+    padding: 0 10px !important;
+}
+
+/* @media only screen and (min-width: 1250px){
+    .btn-text{
+        font-size: 14px !important;
+        padding: 0 10px !important;
+    }
+} */

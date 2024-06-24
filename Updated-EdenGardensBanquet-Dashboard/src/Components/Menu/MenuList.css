@@ -1,0 +1,52 @@
+.menu-bar {
+    height: 88.5vh;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+    position: relative;
+}
+
+:where(.css-dev-only-do-not-override-dkbvqv).ant-menu-light .ant-menu-submenu-selected>.ant-menu-submenu-title,
+:where(.css-dev-only-do-not-override-dkbvqv).ant-menu-light>.ant-menu .ant-menu-submenu-selected>.ant-menu-submenu-title {
+    color: #b78953;
+}
+
+:where(.css-dev-only-do-not-override-dkbvqv).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-dkbvqv).ant-menu-light>.ant-menu .ant-menu-item-selected {
+    color: #fff;
+    background-color: #b78953;
+}
+
+.menu-bar::-webkit-scrollbar {
+    width: 1px;
+}
+
+.ant-menu.ant-menu-inline .ant-menu-item {
+    padding: 20px !important;
+    padding-left: 24px !important;
+}
+
+.ant-menu.ant-menu-inline .ant-menu-submenu .ant-menu-item-only-child {
+    padding-left: 47px !important;
+}
+
+.ant-menu.ant-menu-inline .ant-menu-submenu .ant-menu-submenu-inline .ant-menu.ant-menu-inline {
+    padding-left: 47px !important;
+}
+
+/* .ant-menu.ant-menu-inline .ant-menu-submenu .ant-menu.ant-menu-inline  {
+    padding-left: 47px !important;
+} */
+.ant-menu.ant-menu-inline .ant-menu-sub .ant-menu-item{
+    padding-left: 47px !important;
+}
+
+.menu-font-size{font-size: 14px !important;}
+
+/* @media only screen and (min-width: 1200px){
+    .menu-font-size{
+        font-size: 14px !important;
+    }
+} */

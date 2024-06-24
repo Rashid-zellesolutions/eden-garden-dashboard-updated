@@ -1,0 +1,107 @@
+.calendar {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+}
+
+.calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.calendar .header .month {
+    display: flex;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.calendar .header .btns {
+    display: flex;
+    gap: 10px;
+}
+
+.calendar .header .btns .btn {
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendar .header .btns .btn:hover {
+    background-color: #00698B;
+    transform: scale(1.05);
+}
+
+.weekdays {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.weekdays .day {
+    width: calc(100% / 7 - 10px);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.days .day {
+    width: calc(100% / 7 - 10px);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.days .day.today {
+    color: #fff;
+    background-color: #F07A2A;
+}
+
+.days .day.disabled {
+    background-color: #ebebf2 ;
+    cursor: not-allowed;
+    color: var(--disabled-color);
+    user-select: none;
+}
+
+.days .day.selected {
+    background-color: var(--selected-color);
+    color: #fff;
+}
+
+.days .day:hover:not(.disabled) {
+    background-color: #00698B;
+}
+.day.sunday {
+    background-color: white !important;
+    color: grey !important;
+}

@@ -1,0 +1,87 @@
+.upperTabs {
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: center;
+    /* padding: 25; */
+    gap: 15px;
+}
+
+.mainHeadingDB {
+    display: flex;
+    /* flex-direction: column; */
+    text-align: start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+.select-div > .select-vanue-div{
+    width: 49%;
+}
+
+@media only screen and (max-width: 1324px){
+    .select-div > .select-vanue-div{
+        width: 39% !important;
+    }
+    .mainHeadingDB > div > h1{
+        font-size: 18px !important;
+    }
+}
+
+@media only screen and (max-width: 1250px){
+    .mainHeadingDB > div > h1{
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 1090px){
+    .mainHeadingDB > div > h1{
+        font-size: 14px !important;
+    }
+}
+
+
+
+
+
+/* .select-vanue-div{
+    width: 50%;
+}*/
+
+/* .select-div > .select-vanue-div > .ant-select-single > .ant-select-selector{
+    background-color: blue;
+} */
+
+
+
+.mainHeadingDB h1 {
+    margin: 0;
+    color: #353E49;
+    font-size: 20px;
+}
+
+.dividerDB {
+    height: 2.5px;
+
+    background-color: #B78953;
+    border-radius: 10px;
+    margin: 10px 0 0 0;
+}
+
+.dashbaordCalendar::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.dashbaordCalendar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.dashbaordCalendar::-webkit-scrollbar-thumb {
+    background: #b78953;
+    border-radius: 10px;
+}

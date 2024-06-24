@@ -1,0 +1,11 @@
+/* .ant-form-item{
+    width: 20% !important;
+} */
+
+.add-booking-container > .input-wrapper > div > .ant-form-item{
+    width: 21% !important;
+}
+
+.add-booking-container > .input-wrapper > div > .ant-form-item:nth-child(3){
+    width: 15% !important;
+}

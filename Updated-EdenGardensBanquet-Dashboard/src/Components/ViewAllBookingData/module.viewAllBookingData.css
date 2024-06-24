@@ -1,0 +1,24 @@
+/* Media Query for view all data page */
+
+
+/* Event Info */
+.input-labels{
+    font-size: 10px !important;
+}
+
+
+.headings{
+    font-size: 18px !important;
+}
+
+@media only screen and (min-width: 1250px){
+    .input-labels{
+        font-size: 14px !important;
+    }
+    .headings{
+        font-size: 22px !important;
+    }
+}
+
+/* Costumer Info */
+

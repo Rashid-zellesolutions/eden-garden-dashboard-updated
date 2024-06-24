@@ -1,0 +1,28 @@
+/* Meddia Query for responsiveness */
+
+    .input-labels{
+        font-size: 12px !important;
+    }
+    .input-labels::placeholder{
+        font-size: 10px !important;
+    }
+    .headings{
+        font-size: 18px !important;
+    }
+
+@media only screen and (min-width: 1250px){
+    .input-labels{
+        font-size: 14px !important;
+        
+    }
+    .input-labels::placeholder {
+        font-size: 14px !important;
+    }
+    .headings {
+        font-size: 22px !important;
+    }
+}
+
+.no-of-p{
+    background-color: blue;
+}

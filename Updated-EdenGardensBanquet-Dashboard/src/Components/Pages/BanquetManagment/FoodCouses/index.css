@@ -1,0 +1,14 @@
+.ant-upload-wrapper .ant-upload{
+    width: 100% !important;
+    display: flex;
+    height: 35;
+}
+:where(.css-dev-only-do-not-override-dkbvqv).ant-btn-default {
+    width: 100% !important;
+}
+
+:where(.css-dev-only-do-not-override-dkbvqv).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+    color: #f9b060;
+    border-color: #b78953 !important;
+    box-shadow: 0 0 0 .5px #b78953;
+}

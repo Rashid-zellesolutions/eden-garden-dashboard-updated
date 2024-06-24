@@ -1,0 +1,67 @@
+.ant-table-wrapper .ant-table-thead >tr>th {
+    font-size: 14px !important;
+    /* padding: 5px !important; */
+}
+
+.ant-table-wrapper .ant-table-tbody >tr>td {
+    font-size: 14px !important;
+    /* padding: 5px !important; */
+}
+
+/* @media only screen and (max-width: 1470px){
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 13px !important;
+    }
+}
+
+@media only screen and (max-width: 1410px){
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 12px !important;
+    }
+}*/
+
+@media only screen and (max-width: 1356px){
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 13px !important;
+        padding: 8px !important;
+    }
+    .ant-table-wrapper .ant-table-thead >tr>th {
+        font-size: 13px !important;
+        padding: 12px !important;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 10px !important;
+        padding: 10px !important;
+    }
+    .ant-table-wrapper .ant-table-thead >tr>th {
+        font-size: 10px !important;
+        padding: 12px !important;
+    }
+} 
+
+/* @media only screen and (min-width: 1033px){
+    .ant-table-wrapper .ant-table-thead >tr>th {
+        font-size: 12px !important;
+        padding: 10px !important;
+    }
+    
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 12px !important;
+        padding: 10px !important;
+    }
+}
+
+
+@media only screen and (min-width: 1200px){
+    .ant-table-wrapper .ant-table-thead >tr>th {
+        font-size: 12px !important;
+    }
+    
+    .ant-table-wrapper .ant-table-tbody >tr>td {
+        font-size: 12px !important;
+        padding: 5px !important;
+    }
+} */

@@ -1,0 +1,18 @@
+/* Order Supply Costume Table */
+
+.ant-form-item .ant-form-item-label >label {
+    font-size: 10px !important;
+}
+
+.headings{
+    font-size: 18px !important;
+}
+
+@media only screen and (min-width: 1250px){
+    .ant-form-item .ant-form-item-label >label {
+        font-size: 14px !important;
+    }
+    .headings{
+        font-size: 22px !important;
+    }
+}
