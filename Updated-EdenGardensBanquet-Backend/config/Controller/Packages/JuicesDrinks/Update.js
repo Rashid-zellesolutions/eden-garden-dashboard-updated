@@ -1,4 +1,6 @@
 const {JuiceDrinks} = require('../../../Model/FoodMenue/Packages');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         if(name) juiceDrinkObj.name = name;
         if(cost) juiceDrinkObj.cost = cost;
         if(description) juiceDrinkObj.description = description;
-        if(juiceDrinkImage){
+        if(juiceDrinkImage && juiceDrinkImage.length > 0){
+            const oldPath = juiceDrinkObj.juiceDrinkImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             juiceDrinkObj.juiceDrinkImageName = juiceDrinkImage[0].originalname,
             juiceDrinkObj.juiceDrinkImagePath = `/uploads/FoodType/ColdDrinks/${juiceDrinkImage[0].filename}`
         }

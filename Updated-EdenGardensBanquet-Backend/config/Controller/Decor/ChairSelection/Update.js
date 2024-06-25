@@ -1,13 +1,12 @@
 const {ChairSelection} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params
     const {name, cost,description} = req.body
     const chairSelectionImage = req.files['chairImage'];
 
-    // console.log(id)
-    // console.log(name, cost)
-    // console.log(chairSelectionImage)
     try {
         const chairObj = await ChairSelection.findById(id);
         if(!chairObj){
@@ -16,13 +15,14 @@ const Update = async(req, res) => {
         if(name) chairObj.name = name;
         if(cost) chairObj.cost = cost;
         if(description) chairObj.description = description;
-        if(chairSelectionImage){
+        if(chairSelectionImage && chairSelectionImage.length > 0){
+            const oldPath = chairObj.chairImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             chairObj.chairImageName = chairSelectionImage[0].originalname;
-            chairObj.chairImagePath = chairSelectionImage[0].path
+            chairObj.chairImagePath = `/uploads/Decor/Chairs/${chairSelectionImage[0].filename}`;
         }
-
-        console.log(chairSelectionImage)
-        console.log(chairObj)
         await chairObj.save();
         res.status(200).json({status: 200, message: "Data Updated", chairObj});
         

@@ -287,13 +287,13 @@ function Services() {
                                                         validator: (rule, value, callback) => validateUnitprice(rule, value, callback, index),
                                                     },
                                                 ]}
-                                                label={index === 0 ? 'Unit Price' : ""}
+                                                label={index === 0 ? 'Unit Price ($)' : ""}
                                                 style={{
                                                     
                                                     width: '100%', height: index === 0 ? 60 : 45, marginBottom: index === 0 ? 30 : 10
                                                 }}
                                             >
-                                                <Input placeholder="Unit Price" style={{
+                                                <Input placeholder="Unit Price ($)" style={{
                                                     width: "100%",
                                                     height: 35,
                                                     background: "#fff"

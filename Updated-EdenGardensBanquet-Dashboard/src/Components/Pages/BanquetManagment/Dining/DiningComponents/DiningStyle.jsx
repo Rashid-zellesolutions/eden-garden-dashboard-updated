@@ -22,8 +22,6 @@ const DiningStyle = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteData, setDeleteData] = useState(null);
   const [loading, setLoading] = useState(false);
-  
-
 
   const handleCloseSuccessPopup = () => {
     setSuccessPopupOpen(false)
@@ -32,7 +30,6 @@ const DiningStyle = () => {
   const addDining = () => {
     setDiningAddVisible(!isDiningAddVisible);
   };
-
 
   const handleDeleteService = async (id) => {
     try {
@@ -52,6 +49,7 @@ const DiningStyle = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -73,9 +71,6 @@ const DiningStyle = () => {
       console.log(diningFormData)
     }
   }
-
-
-
 
   const diningSelectionSubmit = async (e) => {
     e.preventDefault();
@@ -125,12 +120,6 @@ const DiningStyle = () => {
 
   }
 
-
-
-
-
-
-
   const navigate = useNavigate();
   useEffect(() => {
       const fetchDining = async() => {
@@ -169,13 +158,6 @@ const DiningStyle = () => {
     setDeleteModal(true);
   };
 
-
-
-
-
-
-
-
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
     if (key === 'edit') {
@@ -186,7 +168,6 @@ const DiningStyle = () => {
       handleOpenDeletePopup(record);
     }
   };
-
 
   const menu = (record) => (
     <Menu  onClick={({ key }) => handleMenuClick(record, key)} style={{ width: "100%", display: "flex", justifyContent: "center", flexDirection: "column", padding: "10px" }}>
@@ -215,7 +196,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Cost',
+    title: 'Cost ($)',
     dataIndex: 'cost',
     key: 'cost',
   },
@@ -257,8 +238,6 @@ useEffect(() => {
 
 return (
  <>
- 
- 
  <div style={{
     width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
     flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -312,9 +291,9 @@ return (
               />
               <InputField
                 width={'33%'}
-                label={'Cost'}
+                label={'Cost ($)'}
                 name="cost"
-                placeholder={'Cost'}
+                placeholder={'Cost ($)'}
                 value={diningFormData.cost}
                 onChange={handleDiningSelectionChange}
               />

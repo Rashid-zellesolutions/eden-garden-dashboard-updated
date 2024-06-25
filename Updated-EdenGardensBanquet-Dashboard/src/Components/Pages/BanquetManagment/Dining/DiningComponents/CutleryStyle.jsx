@@ -24,7 +24,6 @@ const CutleryStyle = () => {
   const [deleteData, setDeleteData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-
   const handleCloseSuccessPopup = () => {
     setSuccessPopupOpen(false)
   }
@@ -32,7 +31,6 @@ const CutleryStyle = () => {
   const addCutlery = () => {
     setCutleryAddVisible(!isCutleryAddVisible);
   };
-
 
   const handleDeleteService = async (id) => {
     try {
@@ -52,6 +50,7 @@ const CutleryStyle = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -73,9 +72,6 @@ const CutleryStyle = () => {
       console.log(cutleryFormData)
     }
   }
-
-
-
 
   const cutlerySelectionSubmit = async (e) => {
     e.preventDefault();
@@ -125,11 +121,6 @@ const CutleryStyle = () => {
 
   }
 
-
-
-
-
-
   useEffect(() => {
       const fetchCutlery = async() => {
         
@@ -168,13 +159,6 @@ const CutleryStyle = () => {
     setDeleteModal(true);
   };
 
-
-
-
-
-
-
-
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
     if (key === 'edit') {
@@ -185,7 +169,6 @@ const CutleryStyle = () => {
       handleOpenDeletePopup(record);
     }
   };
-
 
   const menu = (record) => (
     <Menu  onClick={({ key }) => handleMenuClick(record, key)} style={{ width: "100%", display: "flex", justifyContent: "center", flexDirection: "column", padding: "10px" }}>
@@ -214,7 +197,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Cost',
+    title: 'Cost ($)',
     dataIndex: 'cost',
     key: 'cost',
   },
@@ -252,12 +235,8 @@ const data = cutleryData.map((item, index) => ({
 useEffect(() => {
 }, [cutleryFormData])
 
-
-
 return (
  <>
- 
- 
  { loading? <Loader/> : <div style={{
     width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
     flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -311,9 +290,9 @@ return (
               />
               <InputField
                 width={'33%'}
-                label={'Cost'}
+                label={'Cost ($)'}
                 name="cost"
-                placeholder={'Cost'}
+                placeholder={'Cost ($)'}
                 value={cutleryFormData.cost}
                 onChange={handleCutlerySelectionChange}
               />

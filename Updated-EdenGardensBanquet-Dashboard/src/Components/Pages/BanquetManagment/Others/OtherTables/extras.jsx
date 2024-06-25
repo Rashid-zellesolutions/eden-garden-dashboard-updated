@@ -74,7 +74,6 @@ const Extras = () => {
 
   const extrasSelectionSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.put(`${Url}Extras/update-extras/${currentRecord._id}`, extrasFormData, {
         headers: {
@@ -82,7 +81,7 @@ const Extras = () => {
         },
       });
       setSuccessPopupOpen(true);
-      setSuccessPopupMessage('Data Updated');
+      setSuccessPopupMessage('Extras Updated');
       console.log(response.data);
 
       clearForm();
@@ -93,6 +92,9 @@ const Extras = () => {
       console.error('Error Adding Data', error);
     }
   };
+  const addPackage = () => {
+    setEditEnable(!isEditEnable)
+  }
 
   return (
     <>
@@ -266,7 +268,7 @@ const Extras = () => {
             <div style={{ width: '100%', display: 'flex', gap: '15px', marginTop: '20px' }}>
               <InputField
                 width={'33%'}
-                label={'Extra Room Cost'}
+                label={'Extra Room Cost ($)'}
                 name="extraRoomCost"
                 placeholder={'In Dollars ($)'}
                 value={extrasFormData.extraRoomCost}
@@ -274,7 +276,7 @@ const Extras = () => {
               />
               <InputField
                 width={'33%'}
-                label={'Valet Cost (Each)'}
+                label={'Valet Cost (Each) ($)'}
                 name="valetCost"
                 placeholder={'In Dollars ($)'}
                 value={extrasFormData.valetCost}
@@ -282,7 +284,7 @@ const Extras = () => {
               />
               <InputField
                 width={'33%'}
-                label={'Security Cost (Each)'}
+                label={'Security Cost (Each) ($)'}
                 name="securityCost"
                 placeholder={'In Dollars ($)'}
                 value={extrasFormData.securityCost}
@@ -290,7 +292,7 @@ const Extras = () => {
               />
             </div>
             {isEditEnable && (
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px' }}>
+              <div style={{ width: '100%', display: 'flex', justifyContent: 'end', gap: '15px', marginTop: '10px', marginBottom: '10px' }}>
                 <Button
                   type="primary"
                   htmlType="submit"
@@ -303,6 +305,22 @@ const Extras = () => {
                   className="custom-hover-btn"
                 >
                   Update
+                </Button>
+                <Button type='primary' 
+                onClick={() => {
+                  clearForm()
+                  addPackage()
+                }}
+                style={{
+                  display: 'inline-block',
+                  width: '10%',
+                  height: '35px',
+                  backgroundColor: 'black',
+                  right: '0'
+                }}
+                className='custom-hover-btn'
+                >
+                  {isEditing ? 'Cancel' : 'Cancel'}
                 </Button>
               </div>
             )}

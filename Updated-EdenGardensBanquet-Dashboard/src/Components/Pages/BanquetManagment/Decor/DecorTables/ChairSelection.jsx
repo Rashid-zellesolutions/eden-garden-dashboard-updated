@@ -36,7 +36,7 @@ const ChairTable = () => {
     const handleDeleteService = async (id) => {
       try {
         setLoading(true);
-        await axios.delete(`${Url}/ChairSelection/delete-chair-selection/${id}`);
+        await axios.delete(`${Url}ChairSelection/delete-chair-selection/${id}`);
         setChairData(chairData.filter(item => item._id !== id));
         setLoading(false);
       } catch (error) {
@@ -45,6 +45,7 @@ const ChairTable = () => {
         console.error('Failed to delete food type');
         setLoading(false);
       }
+      console.log("chair id ", id)
     };
   
     const handleCloseDeletePopup = () => {
@@ -72,8 +73,6 @@ const ChairTable = () => {
         console.log(chairFormData)
       }
     }
-
-
 
     const chairSelectionSubmit = async (e) => {
       e.preventDefault();
@@ -107,27 +106,17 @@ const ChairTable = () => {
           console.log(response.data)
           setLoading(false);
         }
-
-    clearForm();
-    setFormSubmitted(true);
-    setChairAddVisible(false);
-    setIsEditing(false);
-    setCurrentRecord(null);
-    setLoading(false);
-      
-  
-  
-  
+        clearForm();
+        setFormSubmitted(true);
+        setChairAddVisible(false);
+        setIsEditing(false);
+        setCurrentRecord(null);
+        setLoading(false);
       } catch (error) {
         console.error("Error Adding Data", error);
       }
-  
     }
   
-
-
-
-
     const fetchChair = async() => {
       try {
         setLoading(true);
@@ -168,12 +157,6 @@ const ChairTable = () => {
       setDeleteModal(true);
     };
 
-
-
-
-
-
-    
       const handleMenuClick = (record, key) => {
         if (key === 'edit') {
           setIsEditing(true);
@@ -211,7 +194,7 @@ const ChairTable = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Cost',
+      title: 'Cost ($)',
       dataIndex: 'cost',
       key: 'cost',
     },
@@ -306,9 +289,9 @@ const ChairTable = () => {
                 />
                 <InputField
                   width={'33%'}
-                  label={'Cost'}
+                  label={'Cost ($)'}
                   name="cost"
-                  placeholder={'Cost'}
+                  placeholder={'Cost ($)'}
                   value={chairFormData.cost}
                   onChange={handleChairSelectionChange}
                 />

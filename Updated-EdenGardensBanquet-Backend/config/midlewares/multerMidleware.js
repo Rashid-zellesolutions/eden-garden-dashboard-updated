@@ -2,13 +2,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// const imageUploadMidleware = (req, res, next) => {
-//     if(!req.success){
-//         return res.status(500).json({success: false, message: "image not saved"})
-//     }
-//     next()
-// }
-
 const generateUniqueFileName = () => {
     return Date.now() + '_' + Math.floor(Math.random() * 1000);
 }

@@ -31,7 +31,9 @@ function SalesHistory() {
             return
         }
     }, [userData])
+
     useEffect(() => { AllPayment() }, [])
+
     const formatTimestamp = (timestamp) => {
         const date = new Date(timestamp);
         const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-indexed
@@ -82,17 +84,17 @@ function SalesHistory() {
             render: (booking) => booking.maxPerson,
         },
         {
-            title: 'Total Amount',
+            title: 'Total Amount ($)',
             dataIndex: 'payment',
             render: (payment) => parseFloat(payment.total.toFixed(2)).toLocaleString('en-US'),
         },
         {
-            title: 'Received Amount',
+            title: 'Received Amount ($)',
             dataIndex: 'payment',
             render: (payment) => parseFloat(payment.recived.toFixed(2)).toLocaleString('en-US'),
         },
         {
-            title: 'Balance Amount',
+            title: 'Balance Amount ($)',
             dataIndex: 'payment',
             render: (payment) => parseFloat(payment.balance.toFixed(2)).toLocaleString('en-US'),
         },

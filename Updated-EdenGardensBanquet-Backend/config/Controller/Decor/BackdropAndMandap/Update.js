@@ -1,4 +1,6 @@
 const {BackdropAndMandap} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params
@@ -13,7 +15,11 @@ const Update = async(req, res) => {
         if(name) backdropObj.name = name;
         if(cost) backdropObj.cost = cost;
         if(description) backdropObj.description = description;
-        if(backDropImage){
+        if(backDropImage && backDropImage.length > 0){
+            const oldPath = backdropObj.backdropImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`))
+            }
             backdropObj.backdropImageName = backDropImage[0].originalname;
             backdropObj.backdropImagePath = `/uploads/Decor/Backdrop-and-Mandap/${backDropImage[0].filename}`
         }

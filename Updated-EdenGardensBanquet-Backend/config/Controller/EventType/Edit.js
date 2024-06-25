@@ -1,4 +1,7 @@
 const EventTypeModel = require("../../Model/EventTypeSchema");
+const fs = require('fs');
+const path = require('path')
+
 const Edit = async (req, res) => {
     const { id } = req.params;
     // const newData = req.body;
@@ -16,11 +19,19 @@ const Edit = async (req, res) => {
         } 
         if(name) EventType.name = name;
         if(type) EventType.type = type;
-        if(iconOne){
+        if(iconOne && iconOne.length > 0){
+            const oldIconOne = EventType.iconOnePath;
+            if(oldIconOne && fs.unlinkSync(path.resolve(`.${oldIconOne}`))){
+                fs.unlinkSync(path.resolve(`.${oldIconOne}`))
+            }
             EventType.iconOneName = iconOne[0].originalname;
             EventType.iconOnePath = `/uploads/add-event/${iconOne[0].filename}`;
         }
-        if(iconTwo){
+        if(iconTwo && iconTwo.length > 0){
+            const oldIconTwo = EventType.iconTwoPath;
+            if(oldIconTwo && fs.unlinkSync(path.resolve(`.${oldIconTwo}`))){
+                fs.unlinkSync(path.resolve(`.${oldIconTwo}`))
+            }
             EventType.iconTwoName = iconTwo[0].originalname;
             EventType.iconTwoPath = `/uploads/add-event/${iconTwo[0].filename}`
         }

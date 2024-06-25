@@ -33,7 +33,6 @@ const LightinigTable = () => {
     setLightingAddVisible(!isLightingAddVisible);
   };
 
-
   const handleDeleteService = async (id) => {
     try {
       setLoading(true);
@@ -52,6 +51,7 @@ const LightinigTable = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -73,9 +73,6 @@ const LightinigTable = () => {
       console.log(lightingFormData)
     }
   }
-
-
-
 
   const lightingSelectionSubmit = async (e) => {
     e.preventDefault();
@@ -125,12 +122,6 @@ const LightinigTable = () => {
 
   }
 
-
-
-
-
-
-
   const navigate = useNavigate();
   useEffect(() => {
       const fetchLighting = async() => {
@@ -168,13 +159,6 @@ const LightinigTable = () => {
     setDeleteData(record);
     setDeleteModal(true);
   };
-
-
-
-
-
-
-
 
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
@@ -215,7 +199,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Cost',
+    title: 'Cost ($)',
     dataIndex: 'cost',
     key: 'cost',
   },
@@ -257,8 +241,6 @@ useEffect(() => {
 
 return (
  <>
- 
- 
  { loading? <Loader/> : <div style={{
     width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
     flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -311,9 +293,9 @@ return (
               />
               <InputField
                 width={'33%'}
-                label={'Cost'}
+                label={'Cost ($)'}
                 name="cost"
-                placeholder={'Cost'}
+                placeholder={'Cost ($)'}
                 value={lightingFormData.cost}
                 onChange={handleLightingSelectionChange}
               />

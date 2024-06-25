@@ -1,4 +1,6 @@
 const {Cutlery} = require('../../../Model/Others/Others');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -14,7 +16,11 @@ const Update = async(req, res) => {
         if(name) cutleryObj.name = name;
         if(cost) cutleryObj.cost = cost;
         if(description) cutleryObj.description = description;
-        if(cutleryImage){
+        if(cutleryImage && cutleryImage.length > 0){
+            const oldPath = cutleryObj.cutleryImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             cutleryObj.cutleryImageName = cutleryImage[0].originalname;
             cutleryObj.cutleryImagePath = `/uploads/Decor/Cutlery/${cutleryImage[0].filename}`;
         }

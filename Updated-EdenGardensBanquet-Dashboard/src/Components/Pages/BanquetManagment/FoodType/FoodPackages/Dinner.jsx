@@ -36,6 +36,7 @@ const BreakFast = () => {
         setDeleteModal(false);
         setDeleteData(null);
     };
+
     const handleCloseSuccessPopup = () => {
         setSuccessPopupOpen(false)
     }
@@ -86,8 +87,6 @@ const BreakFast = () => {
         };
 
     useEffect(() => {
-      
-
         if (formSubmitted) {
             fetchPackagesData(); // Fetch data if formSubmitted is true
             setFormSubmitted(false); // Reset formSubmitted to false
@@ -95,9 +94,7 @@ const BreakFast = () => {
     }, [formSubmitted]);
 
     useEffect(() => {
-       
-
-            fetchPackagesData(); 
+        fetchPackagesData(); 
     }, []);
 
     const handleMenuClick = (record, key) => {
@@ -168,19 +165,6 @@ const BreakFast = () => {
         }],
         }));
     };
-
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-    //     setFormData((prevFormData) => ({
-    //       ...prevFormData,
-    //       packages: [
-    //         {
-    //           ...prevFormData.packages[0],
-    //           breakFastImage: file,
-    //         },
-    //       ],
-    //     }));
-    // };
 
     const handleDescriptions = (e) => {
         const {value} = e.target;
@@ -306,45 +290,12 @@ const BreakFast = () => {
         }
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    
-    //     const formDataToSubmit = new FormData();
-    //     formDataToSubmit.append('foodType', formData.foodType);
-    //     formDataToSubmit.append('name', formData.packages[0].name);
-    //     formDataToSubmit.append('descriptions', formData.packages[0].descriptions);
-    
-    //     if (formData.packages[0].breakFastImage) {
-    //       formDataToSubmit.append('breakFastImage', formData.packages[0].breakFastImage);
-    //     }
-    
-    //     const arraysToAppend = ['appetizers', 'mainEntries', 'desserts', 'teaCoffe', 'juicesDrinks'];
-    //     arraysToAppend.forEach((arrayName) => {
-    //       formData.packages[0][arrayName].forEach((item, index) => {
-    //         formDataToSubmit.append(`${arrayName}[${index}]`, item);
-    //       });
-    //     });
-    
-    //     try {
-    //       const response = await axios.post('${Url}FoodType/add-food-type', formDataToSubmit, {
-    //         headers: {
-    //           'Content-Type': 'multipart/form-data',
-    //         },
-    //       });
-    //       alert('Food Type Added');
-    //       console.log('Food Type', response);
-    //       window.location.reload();
-    //     } catch (error) {
-    //       console.error('Error Adding Food Type', error);
-    //     }
-    // };
-
     const columns = [
         {
-            title: 'Image',
-            dataIndex: 'image',
-            key: 'image',
-            render: (img) => <img src={foodType.packages ? foodType.packages : img } height={25} width={25} alt='img' />
+        title: 'Image',
+        dataIndex: 'image',
+        key: 'image',
+        render: (img) => <img src={foodType.packages ? foodType.packages : img } height={25} width={25} alt='img' />
           },
         {
         title: 'Package',
@@ -353,7 +304,7 @@ const BreakFast = () => {
         render: (text) => <span>{text}</span>,
         },
         {
-        title: 'Package Cost',
+        title: 'Package Cost ($)',
         dataIndex: 'cost',
         key: 'cost',
         render: (text) => <span>{text}</span>,

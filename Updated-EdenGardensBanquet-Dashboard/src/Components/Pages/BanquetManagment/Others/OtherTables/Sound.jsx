@@ -24,7 +24,6 @@ const Sound = () => {
     const [deleteData, setDeleteData] = useState(null);
     const [loading, setLoading] = useState(false);
   
-  
     const handleCloseSuccessPopup = () => {
       setSuccessPopupOpen(false)
     }
@@ -32,7 +31,6 @@ const Sound = () => {
     const addSound = () => {
       setSoundAddVisible(!isSoundAddVisible);
     };
-  
   
     const handleDeleteService = async (id) => {
       try {
@@ -70,9 +68,6 @@ const Sound = () => {
       }
     }
   
-  
-  
-  
     const soundSelectionSubmit = async (e) => {
       e.preventDefault();
      
@@ -89,7 +84,7 @@ const Sound = () => {
             }
           });
           setSuccessPopupOpen(true)
-          setSuccessPopupMessage("Data Updated");
+          setSuccessPopupMessage("Sound Updated");
           console.log(response.data)
         } else {
           const response = await axios.post(`${Url}Sound/add-sound`, soundFormData, {
@@ -98,7 +93,7 @@ const Sound = () => {
             }
           });
           setSuccessPopupOpen(true)
-          setSuccessPopupMessage("Data Added");
+          setSuccessPopupMessage("Sound Added");
           console.log(response.data)
         }
   
@@ -116,12 +111,6 @@ const Sound = () => {
       }
   
     }
-  
-  
-  
-  
-  
-  
   
     const navigate = useNavigate();
     useEffect(() => {
@@ -157,14 +146,7 @@ const Sound = () => {
       setDeleteData(record);
       setDeleteModal(true);
     };
-  
-  
-  
-  
-  
-  
-  
-  
+
     // console.log(appetizerData[0]._id)
     const handleMenuClick = (record, key) => {
       if (key === 'edit') {
@@ -175,7 +157,6 @@ const Sound = () => {
         handleOpenDeletePopup(record);
       }
     };
-  
   
     const menu = (record) => (
       <Menu  onClick={({ key }) => handleMenuClick(record, key)} style={{ width: "100%", display: "flex", justifyContent: "center", flexDirection: "column", padding: "10px" }}>
@@ -204,7 +185,7 @@ const Sound = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Cost',
+      title: 'Cost ($)',
       dataIndex: 'cost',
       key: 'cost',
     },
@@ -245,9 +226,7 @@ const Sound = () => {
   
   
   return (
-   <>
-   
-   
+   <> 
    <div style={{
       width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
       flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -300,9 +279,10 @@ const Sound = () => {
                 />
                 <InputField
                   width={'33%'}
-                  label={'Cost'}
+                  label={'Cost ($)'}
+                  type={'number'}
                   name="cost"
-                  placeholder={'Cost'}
+                  placeholder={'Cost ($)'}
                   value={soundFormData.cost}
                   onChange={handleSoundSelectionChange}
                 />
@@ -314,7 +294,7 @@ const Sound = () => {
                   onChange={handleSoundSelectionChange}
                 />
               </div>
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px' }}>
+              <div style={{ width: '100%', display: 'flex', justifyContent: 'end', gap: '15px', marginTop: '10px', marginBottom: '10px' }}>
                 <Button type="primary" htmlType="submit"
                   style={{
                     display: 'inline-block',
@@ -326,6 +306,22 @@ const Sound = () => {
                   className="custom-hover-btn"
                 >
                   {isEditing ? 'Update' : 'Add'}
+                </Button>
+                <Button type='primary'
+                onClick={() => {
+                  clearForm()
+                  addSound()
+                }}
+                style={{
+                  display: 'inline-block',
+                  width: '10%',
+                  height: '35px',
+                  backgroundColor: 'black',
+                  right: '0'
+                }}
+                className='custom-hover-btn'
+                >
+                  {isEditing ? 'Cancel' : 'Cancel'}
                 </Button>
               </div>
   

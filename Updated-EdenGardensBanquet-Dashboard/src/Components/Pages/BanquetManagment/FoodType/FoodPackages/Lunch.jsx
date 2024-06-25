@@ -34,6 +34,7 @@ const BreakFast = () => {
         setDeleteModal(false);
         setDeleteData(null);
     };
+
     const handleCloseSuccessPopup = () => {
         setSuccessPopupOpen(false)
     }
@@ -53,6 +54,7 @@ const BreakFast = () => {
         },
         ],
     });
+
     const shouldShowPagination = formData.length > 1;
 
     useEffect(() => {
@@ -184,19 +186,6 @@ const BreakFast = () => {
         }));
     };
 
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-    //     setFormData((prevFormData) => ({
-    //       ...prevFormData,
-    //       packages: [
-    //         {
-    //           ...prevFormData.packages[0],
-    //           breakFastImage: file,
-    //         },
-    //       ],
-    //     }));
-    // };
-
     const handleDescriptions = (e) => {
         const {value} = e.target;
         setFormData((prevFormData) => ({
@@ -317,46 +306,13 @@ const BreakFast = () => {
         }
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    
-    //     const formDataToSubmit = new FormData();
-    //     formDataToSubmit.append('foodType', formData.foodType);
-    //     formDataToSubmit.append('name', formData.packages[0].name);
-    //     formDataToSubmit.append('descriptions', formData.packages[0].descriptions);
-    
-    //     if (formData.packages[0].breakFastImage) {
-    //       formDataToSubmit.append('breakFastImage', formData.packages[0].breakFastImage);
-    //     }
-    
-    //     const arraysToAppend = ['appetizers', 'mainEntries', 'desserts', 'teaCoffe', 'juicesDrinks'];
-    //     arraysToAppend.forEach((arrayName) => {
-    //       formData.packages[0][arrayName].forEach((item, index) => {
-    //         formDataToSubmit.append(`${arrayName}[${index}]`, item);
-    //       });
-    //     });
-    
-    //     try {
-    //       const response = await axios.post('${Url}FoodType/add-food-type', formDataToSubmit, {
-    //         headers: {
-    //           'Content-Type': 'multipart/form-data',
-    //         },
-    //       });
-    //       alert('Food Type Added');
-    //       console.log('Food Type', response);
-    //       window.location.reload();
-    //     } catch (error) {
-    //       console.error('Error Adding Food Type', error);
-    //     }
-    // };
-
     const columns = [
         {
-            title: 'Image',
-            dataIndex: 'image',
-            key: 'image',
-            render: (img) => <img src={foodType.packages ? foodType.packages : img } height={25} width={25} alt='img' />
-          },
+        title: 'Image',
+        dataIndex: 'image',
+        key: 'image',
+        render: (img) => <img src={foodType.packages ? foodType.packages : img } height={25} width={25} alt='img' />
+        },
         {
         title: 'Package',
         dataIndex: 'name',
@@ -364,7 +320,7 @@ const BreakFast = () => {
         render: (text) => <span>{text}</span>,
         },
         {
-        title: 'Package Cost',
+        title: 'Package Cost ($)',
         dataIndex: 'cost',
         key: 'cost',
         render: (text) => <span>{text}</span>,
@@ -464,6 +420,23 @@ const BreakFast = () => {
     const addPackages = () => {
         setPackageVisible(!packageVisible);
     };
+    
+    const clearForm = () => {
+        setFormData({
+            foodType: 'BreakFast',
+            packages: [
+                {
+                    name: '',
+                    descriptions: '',
+                    appetizers: [],
+                    mainEntries: [],
+                    desserts: [],
+                    teaCoffe: [],
+                    juicesDrinks: [],
+                },  
+            ],
+        });
+    }
 
     return (
         <>
@@ -625,18 +598,34 @@ const BreakFast = () => {
                         </Select>
                     </div>
                 </div>
-            <div style={{width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px'}}>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'end', gap: '15px', marginTop: '10px', marginBottom: '10px'}}>
                 <Button type="primary" htmlType="submit"
+                    style={{
+                        display: 'inline-block',
+                        height: '35px',
+                        width: '20%',
+                        background: 'black',
+                        right: '0',
+                    }}
+                    className="custom-hover-btn"
+                    >
+                    {isEditing ? 'Update' : 'Proceed'}
+                </Button>
+                <Button type='primary'
+                onClick={() => {
+                    clearForm()
+                    addPackages()
+                }}
                 style={{
                     display: 'inline-block',
+                    width: '10%',
                     height: '35px',
-                    width: '20%',
-                    background: 'black',
                     right: '0',
+                    backgroundColor: 'black'
                 }}
-                className="custom-hover-btn"
+                className='custom-hover-btn'
                 >
-                {isEditing ? 'Update' : 'Proceed'}
+                    {isEditing ? 'Cancel' : 'Cancel'}
                 </Button>
             </div>
             </div>

@@ -1,4 +1,6 @@
 const {TableSelection} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -10,12 +12,12 @@ const Update = async(req, res) => {
             res.status(400).json({status: 200, message: "No Data Found"});
         }
         if(name) tableObj.name = name;
-        if(tableObj){
+        if(tableImage && tableImage.length > 0){
+            const oldPath = tableObj.tableImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`)))
             tableObj.tableImageName = tableImage[0].originalname;
-            tableObj.tableImagePath = tableImage[0].path;
+            tableObj.tableImagePath = `/uploads/Decor/Stage${tableImage[0].filename}`;
         }
-        console.log(tableObj);
-        console.log(tableObj);
         await tableObj.save();
         res.status(200).json({status: 200, message: "Data Updated", tableObj})
     } catch (error) {

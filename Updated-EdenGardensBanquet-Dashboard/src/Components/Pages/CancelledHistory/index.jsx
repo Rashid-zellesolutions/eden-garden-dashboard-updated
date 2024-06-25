@@ -81,12 +81,12 @@ function CancelledHistory() {
             render: (booking) => booking.maxPerson,
         },
         {
-            title: 'Total Amount',
+            title: 'Total Amount ($)',
             dataIndex: 'payment',
             render: (payment) => parseFloat(payment.total.toFixed(2)).toLocaleString('en-US'),
         },
         {
-            title: 'Paid Amount',
+            title: 'Paid Amount ($)',
             dataIndex: 'payment',
             render: (payment) => parseFloat(payment.recived.toFixed(2)).toLocaleString('en-US'),
         },

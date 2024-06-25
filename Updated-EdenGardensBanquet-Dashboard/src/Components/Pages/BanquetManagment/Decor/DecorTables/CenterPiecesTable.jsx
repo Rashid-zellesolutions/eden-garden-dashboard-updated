@@ -34,7 +34,6 @@ const CenterTable = () => {
     setCpAddVisible(!isCpAddVisible);
   };
 
-
   const handleDeleteService = async (id) => {
     try {
       setLoading(true);
@@ -52,6 +51,7 @@ const CenterTable = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -73,9 +73,6 @@ const CenterTable = () => {
       console.log(cpFormData)
     }
   }
-
-
-
 
   const cpSelectionSubmit = async (e) => {
     e.preventDefault();
@@ -125,12 +122,6 @@ const CenterTable = () => {
 
   }
 
-
-
-
-
-
-
   const navigate = useNavigate();
   const fetchCp = async() => {
     try {
@@ -145,7 +136,6 @@ const CenterTable = () => {
     }
 }
   useEffect(() => {
-    
       fetchCp();
       if (formSubmitted) {
         fetchCp(); // Fetch data if formSubmitted is true
@@ -155,7 +145,6 @@ const CenterTable = () => {
 
   useEffect(() => {
     if (isEditing && currentRecord) {
-
       setCpFormData({
         name: currentRecord.name,
         description: currentRecord.description,
@@ -169,13 +158,6 @@ const CenterTable = () => {
     setDeleteData(record);
     setDeleteModal(true);
   };
-
-
-
-
-
-
-
 
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
@@ -216,7 +198,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Cost',
+    title: 'Cost ($)',
     dataIndex: 'cost',
     key: 'cost',
   },
@@ -254,12 +236,8 @@ const data = cpData.map((item, index) => ({
 useEffect(() => {
 }, [cpFormData])
 
-
-
 return (
  <>
- 
- 
 { loading? <Loader/> : <div style={{
     width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
     flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -274,8 +252,6 @@ return (
     <div style={{width: '100%'}}>
         <Table columns={columns} dataSource={data} />
     </div>
-
-
     {
       !isCpAddVisible ?
         <Button type="primary" htmlType="submit"
@@ -312,9 +288,9 @@ return (
               />
               <InputField
                 width={'33%'}
-                label={'Cost'}
+                label={'Cost ($)'}
                 name="cost"
-                placeholder={'Cost'}
+                placeholder={'Cost ($)'}
                 value={cpFormData.cost}
                 onChange={handleCpSelectionChange}
               />

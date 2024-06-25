@@ -1,4 +1,6 @@
 const {Desserts} = require('../../../Model/FoodMenue/Packages');
+const fs = require('fs');
+const path = require('path');
 
 const Delete = async(req, res) => {
     const {id} = req.params;
@@ -6,10 +8,17 @@ const Delete = async(req, res) => {
         const dessertObj = await Desserts.findById(id);
         if(!dessertObj){
             res.status(404).json({success: false, message: "Data not found"});
-        }else{
-            await Desserts.findByIdAndDelete(id);
-            res.status(200).json({success: true, message: "Data Deleted", dessertObj})
         }
+        // else{
+        //     await Desserts.findByIdAndDelete(id);
+        //     res.status(200).json({success: true, message: "Data Deleted", dessertObj})
+        // }
+        const imagePath = dessertObj.dessertsImagePath;
+        if(imagePath && fs.unlinkSync(path.resolve(`.${imagePath}`))){
+            fs.unlinkSync(path.resolve(`.${imagePath}`));
+        }
+        await Desserts.findByIdAndDelete(id);
+        res.status(200).json({success: true, message: "Data Delete"});
     } catch (error) {
         console.error("Error Deleting Data", error);
         res.status(500).json({success: false, message: "Internal Server Error"});

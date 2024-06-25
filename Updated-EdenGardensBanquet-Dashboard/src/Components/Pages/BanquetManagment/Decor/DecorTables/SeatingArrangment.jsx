@@ -21,8 +21,6 @@ const SeatingTable = () => {
     setSeatingAddVisible(!isSeatingAddVisible);
   };
 
-
-
   const [seatingData, setSeatingData] = useState([]);
   const [seatingFormData, setSeatingFormData] = useState({ name: '', cost: '', description: '', seatingImage: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -56,6 +54,7 @@ const SeatingTable = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -69,7 +68,6 @@ const SeatingTable = () => {
     setSeatingFormData({ name: '', cost: '', description: '', seatingImage: null });
   };
 
-
   const handleSeatingChange = (e, section) => {
     const { name, value, files } = e.target;
     if (name === 'seatingImage') {
@@ -78,6 +76,7 @@ const SeatingTable = () => {
       setSeatingFormData({ ...seatingFormData, [name]: value });
     }
   }
+
   const seatingSubmit = async (e) => {
   
     e.preventDefault();
@@ -95,7 +94,7 @@ const SeatingTable = () => {
           }
         });
         setSuccessPopupOpen(true)
-        setSuccessPopupMessage("Data Updated");
+        setSuccessPopupMessage("Seating Arrangments Updated");
         console.log(response.data);
         setLoading(false);
       }  else {
@@ -106,7 +105,7 @@ const SeatingTable = () => {
         }
       })
       setSuccessPopupOpen(true)
-      setSuccessPopupMessage("Data Added");
+      setSuccessPopupMessage("Seating Arrangments Added");
       console.log(response.data)
       setLoading(false);
      }
@@ -122,6 +121,7 @@ const SeatingTable = () => {
     setSeatingAddVisible(false);
     setLoading(false);
   }
+
   const navigate = useNavigate();
   const fetchSeatingData = async () => {
     try {
@@ -135,8 +135,8 @@ const SeatingTable = () => {
       setLoading(false);
     }
   }
+
   useEffect(() => {
-   
     fetchSeatingData();
     if (formSubmitted) {
       fetchSeatingData(); // Fetch data if formSubmitted is true
@@ -146,7 +146,6 @@ const SeatingTable = () => {
 
   useEffect(() => {
     if (isEditing && currentRecord) {
-
       setSeatingFormData({
         name: currentRecord.name,
         description: currentRecord.description,
@@ -157,11 +156,11 @@ const SeatingTable = () => {
     }
   }, [isEditing, currentRecord]);
   
-
   const handleOpenDeletePopup = (record) => {
     setDeleteData(record);
     setDeleteModal(true);
   };
+
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
     if (key === 'edit') {
@@ -200,7 +199,7 @@ const SeatingTable = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Cost',
+      title: 'Cost ($)',
       dataIndex: 'cost',
       key: 'cost',
     },
@@ -239,8 +238,6 @@ const SeatingTable = () => {
     console.log(seatingFormData)
   }, [seatingFormData])
 
-
-
   return (
    <>
    { loading? <Loader/> :
@@ -257,30 +254,6 @@ const SeatingTable = () => {
       </div>
       <div style={{ width: '100%' }}>
         <Table columns={columns} dataSource={data} />
-
-
-
-
-
-        {/* <form>
-
-
-          <Decors heading={'Seat Arrangments'}
-            width={'33%'}
-            type={'file'}
-            isTrue={true}
-            data={seatingFormData}
-            imageName={'seatingImage'}
-            handleChange={handleSeatingChange}
-            onSubmit={seatingSubmit}
-          />
-        </form> */}
-
-
-
-
-
-
         {
           !isSeatingAddVisible ?
             <Button type="primary" htmlType="submit"
@@ -317,9 +290,9 @@ const SeatingTable = () => {
                   />
                   <InputField
                     width={'33%'}
-                    label={'Cost'}
+                    label={'Cost ($)'}
                     name="cost"
-                    placeholder={'Cost'}
+                    placeholder={'Cost ($)'}
                     value={seatingFormData.cost}
                     onChange={handleSeatingChange}
                   />

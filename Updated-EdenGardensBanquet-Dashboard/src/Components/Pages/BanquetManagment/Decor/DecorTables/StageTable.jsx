@@ -216,7 +216,7 @@ const StageTable = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Cost',
+      title: 'Cost ($)',
       dataIndex: 'cost',
       key: 'cost',
     },
@@ -313,9 +313,9 @@ const StageTable = () => {
                 />
                 <InputField
                   width={'33%'}
-                  label={'Cost'}
+                  label={'Cost ($)'}
                   name="cost"
-                  placeholder={'Cost'}
+                  placeholder={'Cost ($)'}
                   value={stageFormData.cost}
                   onChange={handleStageSelectionChange}
                 />

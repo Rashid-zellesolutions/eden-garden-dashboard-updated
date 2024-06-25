@@ -483,6 +483,41 @@ const handleZipChange = async (e) => {
     setZip(zipCode);
 };
 
+    const [phoneFormate, setPhoneFormate] = useState("");
+    const formatPhoneNumber = (value) => {
+        if(!value) return value;
+        const phoneNumber = value.replace(/[^\d]/g, "");
+        // const phoneNumberLength = phoneNumber.length;
+        let formattedNumber = "";
+        if (phoneNumber.length <= 3) {
+            formattedNumber = phoneNumber;
+        } else if (phoneNumber.length <= 6) {
+            formattedNumber = `${phoneNumber.slice(0, 1)}-${phoneNumber.slice(1, 4)}${phoneNumber.length > 4 ? '-' : ''}${phoneNumber.slice(4)}`;
+        } else {
+            formattedNumber = `${phoneNumber.slice(0, 1)}-${phoneNumber.slice(1, 4)}-${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 10)}`;
+        }
+
+        return formattedNumber;
+
+        // if (phoneNumber.length > 0) {
+        //     return `0-${phoneNumber.slice(1, 4)}-${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 10)}`;
+        // }
+        // return value;
+        // if(phoneNumberLength < 4) return phoneNumber;
+        // if(phoneNumberLength < 7) {
+        //     return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+        // }
+        // return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
+    }
+
+    const handleChange = (e) => {
+        const input = e.target.value;
+        if (/^[\d-]*$/.test(input)) {
+            setPhone(formatPhoneNumber(input));
+        }
+    }
+
+    console.log("Formated Phone ", phone)
     return (
         <div className='add-booking-container'>
             {loader ? <Loader /> : null}
@@ -601,7 +636,7 @@ const handleZipChange = async (e) => {
                         />
 
                         {venue.length ? <div style={{ width: "100%", display: "flex", alignItems: "center", gap: '15px' }}>
-                        <SelectField label={"Venue Amount By"} placeholder={"Venue Amount By"} width={"25%"}
+                        <SelectField label={"Venue Amount By ($)"} placeholder={"Venue Amount By"} width={"25%"}
                             options={[{ value: "fixed amount", label: "Fixed Amount" }, { value: "no of person", label: "No. of Person" }]} value={paymentType} onChange={(e) => setPaymentType(e)} />
                         {paymentType === "fixed amount" ?
                             <InputField placeholder={"Venue Charges $"} label={"Venue Charges $"}  type={"number"} value={venueCharges} onChange={(e) => {
@@ -749,17 +784,14 @@ const handleZipChange = async (e) => {
                                 }}
                                 placeholder={"Phone Number*"}
                                 value={phone}
-                                onChange={(e) => {
-                                    const input = e.target.value;
-
-                                    // Check if the input is a positive number or an empty string
-                                    if (/^\d+$/.test(input) || input === "") {
-                                        // If it's a positive number or an empty string, update the state
-                                        setPhone(input);
-                                    }
-                                }}
-                                // onChange={(e) => setPhone(e.target.value)}
-                                type={"number"}
+                                // onChange={(e) => {
+                                //     const input = e.target.value;
+                                //     if (/^\d+$/.test(input) || input === "") {
+                                //         setPhone(input);
+                                //     }
+                                // }}
+                                onChange={handleChange}
+                                type={"text"}
                             />
                         </div>
                         </div> 

@@ -1,4 +1,6 @@
 const {StageSize} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         if(name) stageSize.name = name;
         if(cost) stageSize.cost = cost;
         if(description) stageSize.description = description;
-        if(stageImage){
+        if(stageImage && stageImage.length > 0){
+            const oldPath = stageSize.stageImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             stageSize.stageImageName = stageImage[0].originalname;
             stageSize.stageImagePath = `/uploads/Decor/Stage/${stageImage[0].filename}`
         }

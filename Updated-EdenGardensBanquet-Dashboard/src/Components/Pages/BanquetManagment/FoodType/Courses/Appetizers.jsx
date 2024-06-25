@@ -29,6 +29,7 @@ const Appetizers = () => {
         cost: '',
         appetizerImage: null,
     });
+    
 
     // Modal 
     const handleOpenDeletePopup = (record) => {
@@ -74,8 +75,7 @@ const Appetizers = () => {
                 name: currentRecord.name,
                 description: currentRecord.description,
                 cost: currentRecord.cost,
-                
-appetizersImagePath: null,
+                appetizersImagePath: null,
             });
         }
     }, [isEditing, currentRecord]);
@@ -141,40 +141,40 @@ appetizersImagePath: null,
     // console.log("appetizer image ", appetizerData[3].appetizersImagePath)
     const columns = [
         {
-            title: 'Image',
-            dataIndex: 'img',
-            key: 'img',
-            render: (img) => <img src={`${hostUrl}${img}`} /* src={`${img===""?image:`${Url2}${img}`}`} */ height={25} width={25} alt='img' />
+        title: 'Image',
+        dataIndex: 'img',
+        key: 'img',
+        render: (img) => <img src={`${hostUrl}${img}`} /* src={`${img===""?image:`${Url2}${img}`}`} */ height={25} width={25} alt='img' />
         },
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-            render: (text) => <a>{text}</a>,
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: (text) => <a>{text}</a>,
         },
         {
-            title: 'Cost',
-            dataIndex: 'cost',
-            key: 'cost',
+        title: 'Cost ($)',
+        dataIndex: 'cost',
+        key: 'cost',
         },
         {
-            title: 'description',
-            key: 'description',
-            dataIndex: 'description',
+        title: 'description',
+        key: 'description',
+        dataIndex: 'description',
         },
         {
-            title: 'Action',
-            key: 'action',
-            render: (_, record) => (
-                <Dropdown overlay={() => menu(record)} trigger={['click']} overlayClassName="menu-bg" overlayStyle={{ width: "15%", backgroundColor: "#b78953 !important" }}>
-                    <div style={{
-                        boxShadow: "0px 0px 15px -3px rgba(0,0,0,0.1)", borderRadius: "5px", cursor: "pointer",
-                        display: "flex", alignItems: "center", justifyContent: "center", height: "30px", width: "30px"
-                    }}>
-                        <EllipsisOutlined size={45} />
-                    </div>
-                </Dropdown>
-            ),
+        title: 'Action',
+        key: 'action',
+        render: (_, record) => (
+            <Dropdown overlay={() => menu(record)} trigger={['click']} overlayClassName="menu-bg" overlayStyle={{ width: "15%", backgroundColor: "#b78953 !important" }}>
+                <div style={{
+                    boxShadow: "0px 0px 15px -3px rgba(0,0,0,0.1)", borderRadius: "5px", cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center", height: "30px", width: "30px"
+                }}>
+                <EllipsisOutlined size={45} />
+                </div>
+            </Dropdown>
+        ),
         },
     ];
 
@@ -249,9 +249,8 @@ appetizersImagePath: null,
         setFormData({
             name: '',
             description: '',
-            cost: '',
-            
-appetizersImagePath: null,
+            cost: '', 
+            appetizersImagePath: null,
         });
     };
 
@@ -316,9 +315,9 @@ appetizersImagePath: null,
                                 />
                                 <InputField
                                     width={'33%'}
-                                    label={'Cost $'}
+                                    label={'Cost ($)'}
                                     name="cost"
-                                    placeholder={'Cost'}
+                                    placeholder={'Cost ($)'}
                                     value={formData.cost}
                                     onChange={handleChange}
                                 />
@@ -330,7 +329,7 @@ appetizersImagePath: null,
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px' }}>
+                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', gap: '15px', marginBottom: '10px' }}>
                                 <Button type="primary" htmlType="submit"
                                     style={{
                                         display: 'inline-block',
@@ -342,6 +341,21 @@ appetizersImagePath: null,
                                     className="custom-hover-btn"
                                 >
                                     {isEditing ? 'Update' : 'Add Appetizer'}
+                                </Button>
+                                <Button 
+                                onClick={() => {
+                                    clearForm()
+                                    addPackages()
+                                }}
+                                type='primary'
+                                style={{
+                                    display: 'inline-block',
+                                    height: '35px',
+                                    width: '10%',
+                                    background: 'black',
+                                    right: '0',
+                                }}>
+                                    {isEditing ? 'Cancel' : 'Cancel'}
                                 </Button>
                             </div>
                         </form>

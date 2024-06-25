@@ -1,4 +1,6 @@
 const {Desserts} = require('../../../Model/FoodMenue/Packages');
+const fs = require('fs')
+const path = require('path')
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,11 +14,15 @@ const Update = async(req, res) => {
         if(name) dessertObj.name = name;
         if(cost) dessertObj.cost = cost;
         if(description) dessertObj.description = description;
-        if(dessertImage){
+        if(dessertImage && dessertImage.length > 0){
+            const oldPath = dessertObj.dessertsImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             dessertObj.dessertsImageName = dessertImage[0].originalname;
             dessertObj.dessertsImagePath = `/uploads/FoodType/Desserts/${dessertImage[0].filename}`
         };
-        console.log(dessertImage)
+        // console.log(dessertImage)
         await dessertObj.save();
         res.status(200).json({success: true, message: "data updated", dessertObj});
     } catch (error) {

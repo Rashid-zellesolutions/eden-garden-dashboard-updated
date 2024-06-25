@@ -352,7 +352,7 @@ const BreakFast = () => {
         render: (text) => <span>{text}</span>,
         },
         {
-        title: 'Package Cost',
+        title: 'Package Cost ($)',
         dataIndex: 'cost',
         key: 'cost',
         render: (text) => <span>{text}</span>,
@@ -430,7 +430,6 @@ const BreakFast = () => {
         if (item.foodType === "Breakfast" || item.foodType === 'breakfast' || item.foodType === 'BreakFast' || item.foodType === 'BREAKFAST') {
         return item.packages.map((pkg, pkgIndex) => {
             const totalCost = calculateTotalCost(pkg);
-    
             return {
                 key: `${index}-${pkgIndex}`,
                 _id: item._id,

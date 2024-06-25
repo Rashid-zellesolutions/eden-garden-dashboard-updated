@@ -1,4 +1,6 @@
 const {CenterPiece} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params
@@ -13,7 +15,11 @@ const Update = async(req, res) => {
         if(name) centerObj.name = name;
         if(cost) centerObj.cost = cost;
         if(description) centerObj.description = description;
-        if(centerpieceImage){
+        if(centerpieceImage && centerpieceImage.length > 0){
+            const oldPath = centerObj.centerPieceImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             centerObj.centerPieceImageName = centerpieceImage[0].originalname;
             centerObj.centerPieceImagePath =  `/uploads/Decor/Centerpieces/${centerpieceImage[0].filename}`
         }

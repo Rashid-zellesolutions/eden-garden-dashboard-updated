@@ -1,4 +1,6 @@
 const {TeaCoffe} = require('../../../Model/FoodMenue/Packages');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         if(name) teaCoffeObj.name = name;
         if(cost) teaCoffeObj.cost = cost;
         if(description) teaCoffeObj.description = description;
-        if(teaCoffeeImage){
+        if(teaCoffeeImage && teaCoffeeImage.length > 0){
+            const oldImage = teaCoffeObj.teaCoffeImagePath;
+            if(oldImage && fs.unlinkSync(path.resolve(`.${oldImage}`))){
+                fs.unlinkSync(path.resolve(`.${oldImage}`));
+            }
             teaCoffeObj.teaCoffeImageName = teaCoffeeImage[0].originalname;
             teaCoffeObj.teaCoffeImagePath = `/uploads/FoodType/HotDrinks/${teaCoffeeImage[0].filename}`
         }

@@ -1,4 +1,6 @@
 const {Sound} = require('../../../Model/Others/Others');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         if(name) soundObj.name = name;
         if(cost) soundObj.cost = cost;
         if(description) soundObj.description = description;
-        if(soundImage){
+        if(soundImage && soundImage.length > 0){
+            const oldPath = soundObj.soundImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             soundObj.soundImageName = soundImage[0].originalname;
             soundObj.soundImagePath =  `/uploads/Others/Sound/${soundImage[0].filename}`;
         }

@@ -1,4 +1,6 @@
 const {Lightning} = require('../../../Model/decore/Decor');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         }
         if(name) lightObj.name = name;
         if(cost) lightObj.cost = cost;
-        if(lightingImage){
+        if(lightingImage && lightingImage.length > 0){
+            const oldPath = lightObj.lightingImagePath;
+            if(oldPath && fs.unlinkSync(path.resolve(`.${oldPath}`))){
+                fs.unlinkSync(path.resolve(`.${oldPath}`));
+            }
             lightObj.lightingImageName = lightingImage[0].originalname;
             lightObj.lightingImagePath = `/uploads/Decor/Lighting/${lightingImage[0].filename}`
         }

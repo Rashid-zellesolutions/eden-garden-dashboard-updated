@@ -34,11 +34,10 @@ const BackdropTable = () => {
     setBackdropAddVisible(!isBackdropAddVisible);
   };
 
-
   const handleDeleteService = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`${Url}/BackdropAndMandap/delete-backdrop/${id}`);
+      await axios.delete(`${Url}BackdropAndMandap/delete-backdrop/${id}`);
       setBackdropData(backdropData.filter(item => item._id !== id));
       setLoading(false);
     } catch (error) {
@@ -52,6 +51,7 @@ const BackdropTable = () => {
     setDeleteModal(false);
     setDeleteData(null);
   };
+
   const handleDeleteConfirm = () => {
     if (deleteData) {
       handleDeleteService(deleteData._id);
@@ -73,9 +73,6 @@ const BackdropTable = () => {
       console.log(backdropFormData)
     }
   }
-
-
-
 
   const backdropSelectionSubmit = async (e) => {
     e.preventDefault();
@@ -125,12 +122,6 @@ const BackdropTable = () => {
 
   }
 
-
-
-
-
-
-
   const navigate = useNavigate();
   const fetchBackdrop = async() => {
     try {
@@ -144,6 +135,7 @@ const BackdropTable = () => {
         setLoading(false);
     }
 }
+
   useEffect(() => {
      
       fetchBackdrop();
@@ -170,13 +162,6 @@ const BackdropTable = () => {
     setDeleteModal(true);
   };
 
-
-
-
-
-
-
-
   // console.log(appetizerData[0]._id)
   const handleMenuClick = (record, key) => {
     if (key === 'edit') {
@@ -187,7 +172,6 @@ const BackdropTable = () => {
       handleOpenDeletePopup(record);
     }
   };
-
 
   const menu = (record) => (
     <Menu  onClick={({ key }) => handleMenuClick(record, key)} style={{ width: "100%", display: "flex", justifyContent: "center", flexDirection: "column", padding: "10px" }}>
@@ -216,7 +200,7 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Cost',
+    title: 'Cost ($)',
     dataIndex: 'cost',
     key: 'cost',
   },
@@ -254,12 +238,8 @@ const data = backdropData.map((item, index) => ({
 useEffect(() => {
 }, [backdropFormData])
 
-
-
 return (
  <>
- 
- 
 {loading? <Loader/> : <div style={{
     width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center',
     flexWrap: 'wrap', backgroundColor: '#fff', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', 
@@ -312,9 +292,9 @@ return (
               />
               <InputField
                 width={'33%'}
-                label={'Cost'}
+                label={'Cost ($)'}
                 name="cost"
-                placeholder={'Cost'}
+                placeholder={'Cost ($)'}
                 value={backdropFormData.cost}
                 onChange={handleBackdropSelectionChange}
               />

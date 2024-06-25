@@ -141,7 +141,7 @@ const MainEntries = () => {
             render: (text) => <a>{text}</a>,
         },
         {
-            title: 'Cost',
+            title: 'Cost ($)',
             dataIndex: 'cost',
             key: 'cost',
         },
@@ -276,20 +276,6 @@ const MainEntries = () => {
                     >
                       Add Main Entree
                     </Button>}
-                    {/* <Button type="primary" htmlType="submit"
-                        style={{
-                            display: 'inline-block',
-                            height: '35px',
-                            width: '20%',
-                            background: 'black',
-                            marginTop: '20px',
-                            right: '0',
-                        }}
-                        className="custom-hover-btn"
-                        onClick={addPackages}
-                    >
-                        {packageVisible ? "Hide Packages" : "Add Packages"}
-                    </Button> */}
                 </div>
                 {packageVisible && (
                     <div style={{ width: '100%', padding: '10px' }}>
@@ -313,9 +299,9 @@ const MainEntries = () => {
                                 />
                                 <InputField
                                     width={'33%'}
-                                    label={'Cost $'}
+                                    label={'Cost ($)'}
                                     name="cost"
-                                    placeholder={'Cost'}
+                                    placeholder={'Cost ($)'}
                                     value={formData.cost}
                                     onChange={handleChange}
                                 />
@@ -327,7 +313,7 @@ const MainEntries = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px' }}>
+                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', gap: '15px', marginTop: '10px', marginBottom: '10px' }}>
                                 <Button type="primary" htmlType="submit"
                                     style={{
                                         display: 'inline-block',
@@ -338,7 +324,23 @@ const MainEntries = () => {
                                     }}
                                     className="custom-hover-btn"
                                 >
-                                    {isEditing ? 'Update' : 'Add Dessert'}
+                                    {isEditing ? 'Update' : 'Add Entree'}
+                                </Button>
+                                <Button type='primary'
+                                onClick={() => {
+                                    clearForm()
+                                    addPackages()
+                                }}
+                                style={{
+                                    display: 'inline-block',
+                                    width: '10%',
+                                    height: '35px',
+                                    backgroundColor: 'black',
+                                    right: '0'
+                                }}
+                                className='custom-hover-btn'
+                                >
+                                    {isEditing ? 'Cancel' : 'Cancel'}
                                 </Button>
                             </div>
                         </form>

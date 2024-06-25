@@ -36,6 +36,7 @@ const BreakFast = () => {
         setDeleteModal(false);
         setDeleteData(null);
     };
+
     const handleCloseSuccessPopup = () => {
         setSuccessPopupOpen(false)
     }
@@ -55,8 +56,8 @@ const BreakFast = () => {
         },
         ],
     });
-    const shouldShowPagination = formData.length > 1;
 
+    const shouldShowPagination = formData.length > 1;
 
     const fetchPackagesData = async () => {
         try {
@@ -87,7 +88,6 @@ const BreakFast = () => {
         };
 
     useEffect(() => {
-
         if (formSubmitted) {
             fetchPackagesData(); // Fetch data if formSubmitted is true
             setFormSubmitted(false); // Reset formSubmitted to false
@@ -292,15 +292,13 @@ const BreakFast = () => {
         }
     };
 
-
-
     const columns = [
         {
-            title: 'Image',
-            dataIndex: 'image',
-            key: 'image',
-            render: (img) => <img src={`${foodType.packages===null?image:`${Url2}${foodType.packages}`}`} height={25} width={25} alt='img' />
-          },
+        title: 'Image',
+        dataIndex: 'image',
+        key: 'image',
+        render: (img) => <img src={`${foodType.packages===null?image:`${Url2}${foodType.packages}`}`} height={25} width={25} alt='img' />
+        },
         {
         title: 'Package',
         dataIndex: 'name',
@@ -308,7 +306,7 @@ const BreakFast = () => {
         render: (text) => <span>{text}</span>,
         },
         {
-        title: 'Package Cost',
+        title: 'Package Cost ($)',
         dataIndex: 'cost',
         key: 'cost',
         render: (text) => <span>{text}</span>,

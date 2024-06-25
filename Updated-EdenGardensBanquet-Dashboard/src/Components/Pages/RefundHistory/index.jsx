@@ -60,17 +60,17 @@ function RefundHistory() {
             render: (refund) => refund.accountType,
         },
         {
-            title: 'Received Amount',
+            title: 'Received Amount ($)',
             dataIndex: 'refund',
             render: (refund) => parseFloat(refund.total.toFixed(2)).toLocaleString('en-US'),
         },
         {
-            title: 'Cancellation Fee',
+            title: 'Cancellation Fee ($)',
             dataIndex: 'refund',
             render: (refund) => parseFloat(refund.cancelledFee.toFixed(2)).toLocaleString('en-US'),
         },
         {
-            title: 'Refund Amount',
+            title: 'Refund Amount ($)',
             dataIndex: 'refund',
             render: (refund) => parseFloat(refund.refundAmount.toFixed(2)).toLocaleString('en-US'),
         },

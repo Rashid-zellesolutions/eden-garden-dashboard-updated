@@ -1,4 +1,6 @@
 const {DiningOption} = require('../../../Model/Others/Others');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,7 +14,11 @@ const Update = async(req, res) => {
         if(name) diningObj.name = name;
         if(cost) diningObj.cost = cost;
         if(description) diningObj.description = description;
-        if(diningImage){
+        if(diningImage && diningImage.length > 0){
+            const oldImage = diningObj.diningImagePath;
+            if(oldImage && fs.unlinkSync(path.resolve(`.${oldImage}`))){
+                fs.unlinkSync(path.resolve(`.${oldImage}`));
+            }
             diningObj.diningImageName = diningImage[0].originalname,
             diningObj.diningImagePath =   `/uploads/Decor/Dining/${diningImage[0].filename}`
         }

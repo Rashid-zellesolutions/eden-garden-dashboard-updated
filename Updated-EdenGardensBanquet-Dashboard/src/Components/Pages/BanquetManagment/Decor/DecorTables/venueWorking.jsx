@@ -217,12 +217,12 @@ const VenueWorking = () => {
         key: 'capacity',
       },
     {
-      title: 'Cost (Per Person)',
+      title: 'Cost (Per Person) ($)',
       dataIndex: 'personCharges',
       key: 'personCharges',
     },
     {
-        title: 'Cost (Fixed)',
+        title: 'Cost (Fixed) ($)',
         dataIndex: 'fixedCharges',
         key: 'fixedCharges',
       },
@@ -307,27 +307,27 @@ const VenueWorking = () => {
                 />
                     <InputField
                   width={'30%'}
-                  label={'Charges (Per Person)'}
+                  label={'Capacity'}
                   name="capacity"
-                  placeholder={'Charges (Per Person)'}
+                  placeholder={'Capacity'}
                   type={"number"}
                   value={venueFormData.capacity}
                   onChange={handleVenueSelectionChange}
                 />
                 <InputField
                   width={'30%'}
-                  label={'Charges (Per Person)'}
+                  label={'Charges (Per Person) ($)'}
                   name="personCharges"
-                  placeholder={'Charges (Per Person)'}
+                  placeholder={'Charges (Per Person) ($)'}
                   type={"number"}
                   value={venueFormData.personCharges}
                   onChange={handleVenueSelectionChange}
                 />
                   <InputField
                   width={'30%'}
-                  label={'Charges (Fixed)'}
+                  label={'Charges (Fixed) ($)'}
                   name="fixedCharges"
-                  placeholder={'Charges (Fixed)'}
+                  placeholder={'Charges (Fixed) ($)'}
                   type={"number"}
                   value={venueFormData.fixedCharges}
                   onChange={handleVenueSelectionChange}

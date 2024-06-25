@@ -137,7 +137,7 @@ const Desserts = () => {
             render: (text) => <a>{text}</a>,
         },
         {
-            title: 'Cost',
+            title: 'Cost ($)',
             dataIndex: 'cost',
             key: 'cost',
         },
@@ -296,9 +296,9 @@ const Desserts = () => {
                                 />
                                 <InputField
                                     width={'33%'}
-                                    label={'Cost $'}
+                                    label={'Cost ($)'}
                                     name="cost"
-                                    placeholder={'Cost'}
+                                    placeholder={'Cost ($)'}
                                     value={formData.cost}
                                     onChange={handleChange}
                                 />
@@ -310,7 +310,7 @@ const Desserts = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', marginBottom: '10px' }}>
+                            <div style={{ width: '100%', display: 'flex', justifyContent: 'end', marginTop: '10px', gap: '15px', marginBottom: '10px' }}>
                                 <Button type="primary" htmlType="submit"
                                     style={{
                                         display: 'inline-block',
@@ -321,7 +321,22 @@ const Desserts = () => {
                                     }}
                                     className="custom-hover-btn"
                                 >
-                                    {isEditing ? 'Update' : 'Add Package'}
+                                    {isEditing ? 'Update' : 'Add Dessert'}
+                                </Button>
+                                <Button 
+                                onClick={() => {
+                                    clearForm()
+                                    addPackages()
+                                }}
+                                type='primary'
+                                style={{
+                                    display: 'inline-block',
+                                    height: '35px',
+                                    width: '10%',
+                                    background: 'black',
+                                    right: '0',
+                                }}>
+                                    {isEditing ? 'Cancel' : 'Cancel'}
                                 </Button>
                             </div>
                         </form>

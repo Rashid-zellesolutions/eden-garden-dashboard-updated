@@ -1,4 +1,6 @@
 const VenueModel = require('../../Model/VenueSchema');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async (req, res) => {
     const { id } = req.params;
@@ -16,7 +18,11 @@ const Update = async (req, res) => {
         if (capacity) venue.capacity = capacity;
         if (fixedCharges) venue.fixedCharges = fixedCharges;
         if (personCharges) venue.personCharges = personCharges;
-        if (venueImage) {
+        if (venueImage && venueImage.length > 0) {
+            const oldImage = venue.venueImagePath;
+            if(oldImage && fs.unlinkSync(path.resolve(`.${oldImage}`))){
+                fs.unlinkSync(path.resolve(`.${oldImage}`));
+            }
             venue.venueImageName = venueImage[0].originalname;
             venue.venueImagePath = `/uploads/venue/${venueImage[0].filename}`;
         }

@@ -63,15 +63,15 @@ function PaymentHistory() {
             // responsive: ["xl"]
         },
         {
-            title: 'Total Amount',
+            title: 'Total Amount ($)',
             dataIndex: 'total',
         },
         {
-            title: 'Received Amount',
+            title: 'Received Amount ($)',
             dataIndex: 'paidAmount',
         },
         {
-            title: 'Balance Amount',
+            title: 'Balance Amount ($)',
             dataIndex: 'balanceAmount',
         },
     ];

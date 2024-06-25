@@ -1,4 +1,6 @@
 const {Appetizers} = require('../../../Model/FoodMenue/Packages');
+const fs = require('fs');
+const path = require('path');
 
 const Update = async(req, res) => {
     const {id} = req.params;
@@ -12,10 +14,18 @@ const Update = async(req, res) => {
         if(name) appetizerObj.name = name;
         if(cost) appetizerObj.cost = cost;
         if(description) appetizerObj.description = description;
-        if(appetizerImage){
-            appetizerObj.appetizersImageName = appetizerImage? appetizerImage[0].originalname :"",
-            appetizerObj.appetizersImagePath = appetizerImage? `/uploads/FoodType/Appetizers/${appetizerImage[0].filename}`:""
+        if(appetizerImage && appetizerImage.length > 0) {
+            const oldImagePath = appetizerObj.appetizersImagePath;
+            if(oldImagePath && fs.existsSync(path.resolve(`.${oldImagePath}`))){
+                fs.unlinkSync(path.resolve(`.${oldImagePath}`));
+            }
+            appetizerObj.appetizersImageName = appetizerImage[0].originalname;
+            appetizerObj.appetizersImagePath = `/uploads/FoodType/Appetizers/${appetizerImage[0].filename}`;
         }
+        // if(appetizerImage){
+        //     appetizerObj.appetizersImageName = appetizerImage? appetizerImage[0].originalname :"",
+        //     appetizerObj.appetizersImagePath = appetizerImage? `/uploads/FoodType/Appetizers/${appetizerImage[0].filename}`:""
+        // }
         await appetizerObj.save();
         res.status(200).json({success: true, message: "Data Updated", appetizerObj});
     } catch (error) {
