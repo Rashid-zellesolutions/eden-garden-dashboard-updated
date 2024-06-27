@@ -186,6 +186,7 @@ const JuiceDrink = () => {
             setFormData({ ...formData, [name]: value });
         }
     };
+    console.log("Juice Data ", juiceData)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -329,6 +330,7 @@ const JuiceDrink = () => {
                                 <Button onClick={() => {
                                     clearForm()
                                     addPackages()
+                                    setIsEditing(false)
                                 }}
                                 type='primary'
                                 style={{

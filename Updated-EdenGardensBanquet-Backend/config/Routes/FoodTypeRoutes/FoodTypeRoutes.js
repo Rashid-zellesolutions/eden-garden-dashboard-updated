@@ -7,7 +7,7 @@ const updateFoodType = require('../../Controller/Packages/FoodType/Update');
 const Delete = require('../../Controller/Packages/FoodType/Delete');
 
 const {dynamicMulter} = require('../../midlewares/multerMidleware');
-const AddFoodTypeMulter = dynamicMulter('/FoodType', ['breakFastImage'], 1, ['image/jpg', 'image/jpeg', 'image/png'], 2*1024*1024);
+const AddFoodTypeMulter = dynamicMulter('/FoodType/foodPackages', ['foodImage'], 1, ['image/jpg', 'image/jpeg', 'image/png'], 2*1024*1024);
 
 
 const router = express.Router();

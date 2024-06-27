@@ -333,6 +333,7 @@ const TeaCoffe = () => {
                                 onClick={() => {
                                     clearForm()
                                     addPackages()
+                                    setIsEditing(false)
                                 }}
                                 style={{
                                     display: 'inline-block',

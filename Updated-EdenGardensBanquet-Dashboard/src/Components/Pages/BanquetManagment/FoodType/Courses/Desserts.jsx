@@ -327,6 +327,7 @@ const Desserts = () => {
                                 onClick={() => {
                                     clearForm()
                                     addPackages()
+                                    setIsEditing(false)
                                 }}
                                 type='primary'
                                 style={{

@@ -346,6 +346,7 @@ const Appetizers = () => {
                                 onClick={() => {
                                     clearForm()
                                     addPackages()
+                                    setIsEditing(false)
                                 }}
                                 type='primary'
                                 style={{

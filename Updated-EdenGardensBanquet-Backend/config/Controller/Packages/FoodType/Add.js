@@ -3,6 +3,8 @@ const FoodType = require('../../../Model/FoodMenue/FoodType');
 
 const Add = async(req, res) => {
     const {foodType, packages} = req.body;
+    // const foodImage = req.files['foodImage'];
+    console.log("Food Type Image", foodImage)
     try {
         console.log('Received request body:', req.body);
         // const convertedPackages = packages.map(pkg => ({
@@ -17,10 +19,12 @@ const Add = async(req, res) => {
         
         const foodTypeObj = new FoodType({
             foodType,
+            // foodTypeImageName: foodImage ? foodImage[0].originalname : "",
+            // foodTypeImagePath: foodImage ? `/uploads/FoodType/FoodType/foodPackages/${foodImage[0].filename}` : "",
             packages
             // packages: convertedPackages
         })
-        
+        console.log(foodTypeObj)
         await foodTypeObj.save();
         res.status(200).json({success: true, message: "Foood Type Added"});
     } catch (error) {

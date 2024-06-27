@@ -31,7 +31,6 @@ const MainEntries = () => {
         mainEntriesImage: null,
     });
 
-    // Modal 
     const handleOpenDeletePopup = (record) => {
         setDeleteData(record);
         setDeleteModal(true);
@@ -330,6 +329,7 @@ const MainEntries = () => {
                                 onClick={() => {
                                     clearForm()
                                     addPackages()
+                                    setIsEditing(false)
                                 }}
                                 style={{
                                     display: 'inline-block',

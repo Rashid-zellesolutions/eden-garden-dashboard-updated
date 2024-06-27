@@ -130,7 +130,6 @@ const ChairTable = () => {
       }
   }
 
-    const navigate = useNavigate();
     useEffect(() => {
        
         fetchChair();
